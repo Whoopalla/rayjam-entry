@@ -35,7 +35,7 @@ PROJECT_BUILD_PATH    ?= .
 PROJECT_SOURCE_FILES  ?= raylib_game.c
 
 # raylib library variables
-RAYLIB_SRC_PATH       ?= C:/raylib/raylib/src
+RAYLIB_SRC_PATH       ?= ../raylib/ 
 RAYLIB_INCLUDE_PATH   ?= $(RAYLIB_SRC_PATH)
 RAYLIB_LIB_PATH       ?= $(RAYLIB_SRC_PATH)
 
@@ -43,7 +43,7 @@ RAYLIB_LIB_PATH       ?= $(RAYLIB_SRC_PATH)
 RAYLIB_LIBTYPE        ?= STATIC
 
 # Define compiler path on Windows
-COMPILER_PATH         ?= C:\raylib\w64devkit\bin
+COMPILER_PATH         ?= /usr/bin/gcc 
 
 # Build mode for project: DEBUG or RELEASE
 BUILD_MODE            ?= RELEASE
