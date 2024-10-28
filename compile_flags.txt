@@ -1,0 +1,8 @@
+-Wall
+-ggdb 
+-Wextra 
+-Wpedantic 
+-I~/src/raylib/src
+-L~/src/raylib/src
+-lraylib 
+-lm

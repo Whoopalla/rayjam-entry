@@ -21,7 +21,7 @@
 #
 #**************************************************************************************************
 
-.PHONY: all clean
+.PHONY: prepare all clean
 
 # Define required environment variables
 #------------------------------------------------------------------------------------------------
@@ -31,11 +31,11 @@ PLATFORM              ?= PLATFORM_DESKTOP
 # Define project variables
 PROJECT_NAME          ?= raylib_game
 PROJECT_VERSION       ?= 1.0
-PROJECT_BUILD_PATH    ?= .
+PROJECT_BUILD_PATH    ?= ../build
 PROJECT_SOURCE_FILES  ?= raylib_game.c
 
 # raylib library variables
-RAYLIB_SRC_PATH       ?= ../raylib/ 
+RAYLIB_SRC_PATH       ?= ~/src/raylib/src
 RAYLIB_INCLUDE_PATH   ?= $(RAYLIB_SRC_PATH)
 RAYLIB_LIB_PATH       ?= $(RAYLIB_SRC_PATH)
 
@@ -96,7 +96,7 @@ endif
 ifeq ($(PLATFORM_OS),WINDOWS)
     ifeq ($(PLATFORM),PLATFORM_WEB)
         # Emscripten required variables
-        EMSDK_PATH         ?= C:/emsdk
+        EMSDK_PATH         ?= ~/src/emsdk
         EMSCRIPTEN_PATH    ?= $(EMSDK_PATH)/upstream/emscripten
         CLANG_PATH          = $(EMSDK_PATH)/upstream/bin
         PYTHON_PATH         = $(EMSDK_PATH)/python/3.9.2-1_64bit
@@ -366,3 +366,22 @@ ifeq ($(PLATFORM),PLATFORM_WEB)
 endif
 	@echo Cleaning done
 
+prepare:
+ifeq ($(PLATFORM),PLATFORM_DESKTOP)
+    ifeq ($(PLATFORM_OS),WINDOWS)
+		mkdir -p ../build
+    endif
+    ifeq ($(PLATFORM_OS),LINUX)
+		mkdir -p ../build
+    endif
+    ifeq ($(PLATFORM_OS),OSX)
+		mkdir -p ../build
+    endif
+endif
+ifeq ($(PLATFORM),PLATFORM_DRM)
+	mkdir -p ../build
+endif
+ifeq ($(PLATFORM),PLATFORM_WEB)
+	mkdir -p ../build
+endif
+	@echo preparing solution.. 
